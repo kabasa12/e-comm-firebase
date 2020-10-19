@@ -1,14 +1,16 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import {auth} from '../../firebase/firebase.util';
+
 import {ReactComponent as Logo} from '../../assets/crown.svg';
 import CartIcon from '../cart-icon/cart-icon.component';
-import CustomButton from '../cart-dropdown/cart-dropdown.component';
-import {auth} from '../../firebase/firebase.util';
+import CartDropDown from '../cart-dropdown/cart-dropdown.component';
+
 import './header.styles.scss';
 
 
-const Header = ({currentUser}) => (
+const Header = ({currentUser,hidden}) => (
     <div className="header">
         <Link className="logo-container" to="/">
             <Logo className="logo" />
@@ -28,7 +30,7 @@ const Header = ({currentUser}) => (
             }
             <CartIcon />
         </div>
-        {  hidden ? null :<CustomButton />}
+        {  hidden ? null :<CartDropDown />}
     </div>
 )
 
